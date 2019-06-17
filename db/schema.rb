@@ -12,22 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2019_05_27_055802) do
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "post_id"
+  create_table "okiniiris", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "riyousha_bangou"
+    t.integer "toukou_bangou"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "content", default: "", null: false
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", default: "", null: false
+  create_table "riyoushas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "namae", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -35,8 +28,15 @@ ActiveRecord::Schema.define(version: 2019_05_27_055802) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_riyoushas_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_riyoushas_on_reset_password_token", unique: true
+  end
+
+  create_table "toukous", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "naiyou", default: "", null: false
+    t.integer "riyousha_bangou"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

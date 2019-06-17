@@ -1,0 +1,12 @@
+<%@posts.each do |post| %>
+  <p>
+    <%=post.id%> <%=link_to post.naiyou ,"/twitter/#{post.id}/show"%>　by<%=Riyousha.find_by(id:post.riyousha_bangou).namae%>
+    <%= link_to "いいね",twitter_favorite_path(post.id,user_id: current_riyousha.id),method: :put%>
+    <%=Okiniiri.where(toukou_bangou:post.id).count%>
+    <%= link_to "編集", "/twitter/#{post.id}/edit"%>
+    <%= link_to "削除", "/twitter/#{post.id}/destroy",method: :delete%>
+  </p>
+<%end%>
+
+<%= link_to "投稿", "/twitter/new"%>
+<%= link_to "ログアウト", destroy_riyousha_session_path, method: :delete %>

@@ -1,4 +1,0 @@
-<%= form_tag("/home/#{@post.id}/update", method: :put) do %>
-  <%= text_field_tag :content,@post.content%>
-  <%= submit_tag "編集" %>
-<% end %>

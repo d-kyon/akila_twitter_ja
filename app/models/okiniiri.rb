@@ -1,0 +1,2 @@
+class Okiniiri < ApplicationRecord
+end
